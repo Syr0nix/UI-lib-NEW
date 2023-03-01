@@ -1,18 +1,24 @@
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local InputService = game:GetService("UserInputService")
+
 local UILibrary ={
 	["Options"] = {
 		["Size"] = 0.9
 	}
 }
-local PARENT = game:GetService("CoreGui")
+
+local PARENT = game:GetService("Players").LocalPlayer:FindFirstChild('PlayerGui')
+if not game:GetService("RunService"):IsStudio() then
+    PARENT = game:GetService("CoreGui")
+end
 
 for i,v in next, PARENT:GetChildren() do
     if v.Name == "Library" then
         v:Destroy()
     end
 end
+
 function UILibrary.Main(PrjName,HideKey)
 	local Library = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")

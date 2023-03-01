@@ -8,7 +8,10 @@ local UILibrary ={
 	}
 }
 
-local  PARENT = game:GetService("CoreGui")
+local PARENT = game:GetService("Players").LocalPlayer:FindFirstChild('PlayerGui')
+if not game:GetService("RunService"):IsStudio() then
+    PARENT = game:GetService("CoreGui")
+end
 
 for i,v in next, PARENT:GetChildren() do
     if v.Name == "Library" then
